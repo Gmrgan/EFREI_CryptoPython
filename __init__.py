@@ -1,59 +1,61 @@
 from cryptography.fernet import Fernet
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return render_template('hello.html')  # Comm4
+    return "Bienvenue sur votre API de cryptographie ! Utilisez les routes /encrypt et /decrypt." #comm5
 
 @app.route('/encrypt', methods=['POST'])
 def encryptage():
     try:
-        # Récupération des données JSON
+        # Récupérer les données JSON
         data = request.json
         valeur = data.get('valeur')  # Valeur à chiffrer
         key = data.get('key')  # Clé personnelle
 
         # Validation des données
         if not valeur or not key:
-            return "Erreur : 'valeur' et 'key' sont requis.", 400
-        
-        # Vérification de la validité de la clé
+            return jsonify({"error": "Les champs 'valeur' et 'key' sont obligatoires."}), 400
+
+        # Création de l'instance Fernet avec la clé fournie
         try:
             f = Fernet(key.encode())
-        except Exception:
-            return "Erreur : clé invalide.", 400
+        except Exception as e:
+            return jsonify({"error": "Clé fournie invalide."}), 400
 
-        valeur_bytes = valeur.encode()  # Conversion str -> bytes
-        token = f.encrypt(valeur_bytes)  # Encrypt la valeur
-        return jsonify({"encrypted_value": token.decode()})  # Retourne le token en JSON
+        # Chiffrement
+        valeur_bytes = valeur.encode()
+        token = f.encrypt(valeur_bytes)
+        return jsonify({"encrypted_value": token.decode()})
     except Exception as e:
-        return f"Erreur : {str(e)}", 500
+        return jsonify({"error": f"Erreur lors du chiffrement : {str(e)}"}), 500
 
 @app.route('/decrypt', methods=['POST'])
 def decryptage():
     try:
-        # Récupération des données JSON
+        # Récupérer les données JSON
         data = request.json
         token = data.get('token')  # Valeur à déchiffrer
         key = data.get('key')  # Clé personnelle
 
         # Validation des données
         if not token or not key:
-            return "Erreur : 'token' et 'key' sont requis.", 400
-        
-        # Vérification de la validité de la clé
+            return jsonify({"error": "Les champs 'token' et 'key' sont obligatoires."}), 400
+
+        # Création de l'instance Fernet avec la clé fournie
         try:
             f = Fernet(key.encode())
-        except Exception:
-            return "Erreur : clé invalide.", 400
+        except Exception as e:
+            return jsonify({"error": "Clé fournie invalide."}), 400
 
-        token_bytes = token.encode()  # Conversion str -> bytes
-        valeur = f.decrypt(token_bytes)  # Décryptage du token
-        return jsonify({"decrypted_value": valeur.decode()})  # Retourne la valeur décryptée en JSON
+        # Déchiffrement
+        token_bytes = token.encode()
+        valeur = f.decrypt(token_bytes)
+        return jsonify({"decrypted_value": valeur.decode()})
     except Exception as e:
-        return f"Erreur : {str(e)}", 500
+        return jsonify({"error": f"Erreur lors du déchiffrement : {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
