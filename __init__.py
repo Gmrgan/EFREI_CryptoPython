@@ -9,7 +9,7 @@ app = Flask(__name__)
                                                                                                                                        
 @app.route('/')
 def hello_world():
-    return render_template('hello.html') #Comm3
+    return render_template('hello.html') #Comm4
 
 key = Fernet.generate_key()
 f = Fernet(key)
@@ -19,6 +19,16 @@ def encryptage(valeur):
     valeur_bytes = valeur.encode()  # Conversion str -> bytes
     token = f.encrypt(valeur_bytes)  # Encrypt la valeur
     return f"Valeur encryptée : {token.decode()}"  # Retourne le token en str
-                                                                                                                                                     
+
+@app.route('/decrypt/<string:token>')
+def decryptage(token):
+    try:
+        token_bytes = token.encode()  # Conversion str -> bytes
+        valeur = f.decrypt(token_bytes)  # Décryptage du token
+        return f"Valeur décryptée : {valeur.decode()}"  # Retourne la valeur décryptée en str
+    except Exception as e:
+        return f"Erreur lors du décryptage : {str(e)}", 400
+
+                                                                 
 if __name__ == "__main__":
   app.run(debug=True)
