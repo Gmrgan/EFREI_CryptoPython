@@ -53,11 +53,11 @@ def exo_3():
     return render_template('exo_3.html')
 
 @app.route('/exo_4')
-def exo_3():
+def exo_4():
     return render_template('exo_4.html')
 
 @app.route('/exo_5')
-def exo_3():
+def exo_5():
     return render_template('exo_5.html')
 
 if __name__ == "__main__":
