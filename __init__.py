@@ -39,5 +39,18 @@ def decryptage(token, key):
     except Exception as e:
         return jsonify({"error": f"Erreur lors du déchiffrement : {str(e)}"}), 500
 
+# Routes pour les fichiers HTML
+@app.route('/exo_1')
+def exo_1():
+    return render_template('exo_1.html')
+
+@app.route('/exo_2')
+def exo_2():
+    return render_template('exo_2.html')
+
+@app.route('/exo_3')
+def exo_3():
+    return render_template('exo_3.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
