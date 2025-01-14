@@ -64,5 +64,9 @@ def exo_5():
 def svg():
     return render_template('svg.html')
 
+@app.route('/maison')
+def maison():
+    return render_template('maison.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
