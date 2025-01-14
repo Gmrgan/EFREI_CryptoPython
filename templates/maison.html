@@ -8,32 +8,56 @@
 
   <!-- Corps de la maison -->
   <rect style="fill:yellow; stroke:orange; stroke-width:5px;" x="250" y="300" width="250" height="200" />
-  
+
   <!-- Toit -->
   <polygon style="fill:red; stroke:black; stroke-width:5px;" points="250,300 375,200 500,300" />
-  
+
+  <!-- Cheminée -->
+  <rect style="fill:red; stroke:black; stroke-width:3px;" x="450" y="230" width="20" height="50" />
+
+  <!-- Fumée -->
+  <ellipse cx="460" cy="210" rx="15" ry="10" style="fill:lightgray;" />
+  <ellipse cx="470" cy="190" rx="20" ry="15" style="fill:lightgray;" />
+  <ellipse cx="480" cy="170" rx="25" ry="20" style="fill:lightgray;" />
+
   <!-- Porte -->
   <rect style="fill:orange; stroke:brown; stroke-width:5px;" x="360" y="400" width="50" height="100" />
-  
-  <!-- Fenêtre gauche -->
-  <rect style="fill:white; stroke:blue; stroke-width:3px;" x="275" y="325" width="50" height="50" />
-  <line x1="275" y1="350" x2="325" y2="350" style="stroke:blue;stroke-width:3px;" />
-  <line x1="300" y1="325" x2="300" y2="375" style="stroke:blue;stroke-width:3px;" />
+  <circle style="fill:brown;" cx="405" cy="450" r="5" />
 
-  <!-- Fenêtre droite -->
-  <rect style="fill:white; stroke:blue; stroke-width:3px;" x="425" y="325" width="50" height="50" />
-  <line x1="425" y1="350" x2="475" y2="350" style="stroke:blue;stroke-width:3px;" />
-  <line x1="450" y1="325" x2="450" y2="375" style="stroke:blue;stroke-width:3px;" />
+  <!-- Fenêtre inclinée -->
+  <polygon style="fill:white; stroke:blue; stroke-width:3px;" points="320,275 350,300 300,325 270,300" />
+  <line x1="320" y1="275" x2="300" y2="325" style="stroke:blue; stroke-width:3px;" />
+  <line x1="350" y1="300" x2="270" y2="300" style="stroke:blue; stroke-width:3px;" />
 
   <!-- Soleil -->
-  <circle style="fill:yellow; stroke:orange; stroke-width:5px;" cx="600" cy="100" r="50" />
-  <line x1="600" y1="30" x2="600" y2="70" style="stroke:orange;stroke-width:5px;" />
-  <line x1="600" y1="130" x2="600" y2="170" style="stroke:orange;stroke-width:5px;" />
-  <line x1="530" y1="100" x2="570" y2="100" style="stroke:orange;stroke-width:5px;" />
-  <line x1="630" y1="100" x2="670" y2="100" style="stroke:orange;stroke-width:5px;" />
+  <circle style="fill:yellow; stroke:orange; stroke-width:5px;" cx="100" cy="100" r="40" />
+  <!-- Rayons du soleil -->
+  <line x1="100" y1="30" x2="100" y2="60" style="stroke:orange;stroke-width:3px;" />
+  <line x1="100" y1="140" x2="100" y2="170" style="stroke:orange;stroke-width:3px;" />
+  <line x1="50" y1="100" x2="70" y2="100" style="stroke:orange;stroke-width:3px;" />
+  <line x1="130" y1="100" x2="150" y2="100" style="stroke:orange;stroke-width:3px;" />
+  <line x1="70" y1="70" x2="85" y2="85" style="stroke:orange;stroke-width:3px;" />
+  <line x1="115" y1="115" x2="130" y2="130" style="stroke:orange;stroke-width:3px;" />
+  <line x1="70" y1="130" x2="85" y2="115" style="stroke:orange;stroke-width:3px;" />
+  <line x1="115" y1="85" x2="130" y2="70" style="stroke:orange;stroke-width:3px;" />
+  <!-- Visage du soleil -->
+  <circle cx="90" cy="90" r="3" style="fill:black;" />
+  <circle cx="110" cy="90" r="3" style="fill:black;" />
+  <path d="M 90 110 Q 100 120 110 110" style="fill:none;stroke:black;stroke-width:2px;" />
 
-  <!-- Herbe -->
-  <ellipse cx="375" cy="500" rx="300" ry="50" style="fill:lightgreen; stroke:green; stroke-width:5px;" />
+  <!-- Buissons -->
+  <circle cx="270" cy="500" r="20" style="fill:green;" />
+  <circle cx="300" cy="490" r="25" style="fill:green;" />
+  <circle cx="330" cy="500" r="20" style="fill:green;" />
+
+  <!-- Fleurs -->
+  <circle cx="480" cy="500" r="8" style="fill:red;" />
+  <circle cx="490" cy="490" r="8" style="fill:red;" />
+  <circle cx="470" cy="490" r="8" style="fill:red;" />
+  <circle cx="480" cy="480" r="8" style="fill:red;" />
+  <circle cx="480" cy="490" r="5" style="fill:yellow;" />
+  <!-- Tige de la fleur -->
+  <line x1="480" y1="500" x2="480" y2="520" style="stroke:green;stroke-width:3px;" />
 
 </svg>
 
