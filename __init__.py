@@ -72,5 +72,9 @@ def maison():
 def jack_club():
     return render_template('jack_club.xml')
 
+@app.route('/chenille')
+def chenille():
+    return render_template('chenille.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
