@@ -68,5 +68,9 @@ def svg():
 def maison():
     return render_template('maison.html')
 
+@app.route('/jack_club')
+def jack_club():
+    return render_template('jack_club.xml')
+
 if __name__ == "__main__":
     app.run(debug=True)
