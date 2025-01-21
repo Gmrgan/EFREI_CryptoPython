@@ -1,0 +1,36 @@
+<html>
+<head>
+<script>
+document.getElementById('img1').style.display="None";
+document.getElementById('img2').style.display="None";
+document.getElementById('img3').style.display="None";
+
+function controler(){
+	if(document.getElementById('Control').checked){
+			alert("Bouton option coché");
+		}
+	else{alert("Bouton option NON coché");}
+}
+
+function afficher(){
+      document.getElementById('img1').style.display="Block";
+      document.getElementById('img2').style.display="Block";
+      document.getElementById('img3').style.display="BLock";
+}
+
+</script>
+</head>
+<body>
+<h2>Images à afficher :</h2>
+<hr/>
+<p>Image 1<input type="img1" id="Control"></p><br>
+<p>Image 1<input type="img2" id="Control"></p><br>
+<p>Image 1<input type="img3" id="Control"></p><br>
+<button onclick="controler()">Check</button>
+<button onclick="afficher()">Afficher</button>
+<img src="{{ url_for('static', filename='image/img1.png') }}" alt="Logo">
+<img src="{{ url_for('static', filename='image/img2.png') }}" alt="Logo">
+<img src="{{ url_for('static', filename='image/img3.png') }}" alt="Logo">
+
+</body>
+</html>
