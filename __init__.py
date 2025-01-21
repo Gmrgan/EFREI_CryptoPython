@@ -76,5 +76,9 @@ def jack_club():
 def chenille():
     return render_template('chenille.html')
 
+@app.route('/d6')
+def d6():
+    return render_template('Jeu_Des_Base.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
