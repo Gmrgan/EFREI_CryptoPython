@@ -5,7 +5,7 @@ app = Flask(__name__) #comm6
 
 @app.route('/')
 def hello_world():
-    return "Bienvenue sur votre API de cryptographie ! Utilisez les routes /encrypt/<valeur>/<key> et /decrypt/<token>/<key>."
+    return render_template('index.html')
 
 @app.route('/encrypt/<valeur>/<key>')
 def encryptage(valeur, key):
