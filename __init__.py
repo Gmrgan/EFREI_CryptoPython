@@ -80,5 +80,9 @@ def chenille():
 def d6():
     return render_template('Jeu_Des_Base.html')
 
+@app.route('/outils_js')
+def outils_js():
+    return render_template('Outils_JS.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
