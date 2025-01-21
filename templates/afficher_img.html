@@ -1,36 +1,43 @@
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<title>Images à afficher</title>
 </head>
 <body>
 <h2>Images à afficher :</h2>
 <hr/>
-<p>Image 1<input type="checkbox" id="img1"></p>
-<p>Image 2<input type="checkbox" id="img2"></p>
-<p>Image 3<input type="checkbox" id="img3"></p>
-<button onclick="afficher()">Afficher</button>
-	
+<p>Image 1 <input type="checkbox" id="check1"></p>
+<p>Image 2 <input type="checkbox" id="check2"></p>
+<p>Image 3 <input type="checkbox" id="check3"></p>
+<button onclick="displayImages()">Afficher</button>
+
 <div>
-<img src="{{ url_for('static', filename='image/img1.png') }}" alt="Logo1">
-<img src="{{ url_for('static', filename='image/img2.png') }}" alt="Logo2">
-<img src="{{ url_for('static', filename='image/img3.png') }}" alt="Logo3">
+    <img id="img1" src="{{ url_for('static', filename='image/img1.png') }}" alt="Logo1">
+    <img id="img2" src="{{ url_for('static', filename='image/img2.png') }}" alt="Logo2">
+    <img id="img3" src="{{ url_for('static', filename='image/img3.png') }}" alt="Logo3">
 </div>
 
 <script>
 window.onload = function() {
-document.getElementById('img1').style.display="None";
-document.getElementById('img2').style.display="None";
-document.getElementById('img3').style.display="None";
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+    img1.style.display = "none";
+    img2.style.display = "none";
+    img3.style.display = "none";
 }
-function afficher(){
-	if(document.getElementById('img1').checked){
-		document.getElementById('img1').style.display="Block";
-}
-	else if(document.getElementById('img2').checked){
-		document.getElementById('img2').style.display="Block";
-}
-	else if(document.getElementById('img3').checked){
-		document.getElementById('img3').style.display="Block";
+
+function displayImages() {
+    const check1 = document.getElementById('check1');
+    const check2 = document.getElementById('check2');
+    const check3 = document.getElementById('check3');
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+
+    img1.style.display = check1.checked ? "block" : "none";
+    img2.style.display = check2.checked ? "block" : "none";
+    img3.style.display = check3.checked ? "block" : "none";
 }
 </script>
 </body>
