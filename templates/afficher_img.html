@@ -12,9 +12,13 @@ function controler(){
 	else{alert("Bouton option NON coché");}
 }
 
-function afficher(){
+function afficher1(){
       document.getElementById('img1').style.display="Block";
+}
+function afficher2(){
       document.getElementById('img2').style.display="Block";
+}
+function afficher3(){
       document.getElementById('img3').style.display="BLock";
 }
 
@@ -23,10 +27,9 @@ function afficher(){
 <body>
 <h2>Images à afficher :</h2>
 <hr/>
-<p>Image 1<input type="img1" id="Control"></p><br>
-<p>Image 1<input type="img2" id="Control"></p><br>
-<p>Image 1<input type="img3" id="Control"></p><br>
-<button onclick="controler()">Check</button>
+<p>Image 1<input type="img1" id="afficher1"></p><br>
+<p>Image 1<input type="img2" id="afficher2"></p><br>
+<p>Image 1<input type="img3" id="afficher3"></p><br>
 <button onclick="afficher()">Afficher</button>
 <img src="{{ url_for('static', filename='image/img1.png') }}" alt="Logo">
 <img src="{{ url_for('static', filename='image/img2.png') }}" alt="Logo">
