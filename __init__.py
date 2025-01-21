@@ -84,5 +84,10 @@ def d6():
 def outils_js():
     return render_template('Outils_JS.html')
 
+@app.route('/afficher_img')
+def afficher_img():
+    return render_template('afficher_img.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
