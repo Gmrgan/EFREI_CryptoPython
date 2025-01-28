@@ -88,6 +88,9 @@ def outils_js():
 def afficher_img():
     return render_template('afficher_img.html')
 
+@app.route('/russian_roulette')
+def russian_roulette():
+    return render_template('russian_roulette.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
