@@ -92,9 +92,5 @@ def afficher_img():
 def russian_roulette():
     return render_template('russian_roulette.html')
 
-@app.route('/projet_roulette')
-def projet_roulette_russe():
-    return render_template('Projet_Roulette_Russe.html')
-
 if __name__ == "__main__":
     app.run(debug=True)
