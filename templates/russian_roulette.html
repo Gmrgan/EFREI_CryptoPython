@@ -1,14 +1,14 @@
 </html>
 <head>
 <script>
+document.addEventListener("click", () => document.getElementById("Br" + n).style.fill = "grey");
 
 function lancer(){
           alert("le barillet tourne");
 }
 
 function chamber(n){
-	document.getElementById("Br"+n).style.fill="gray";
-	delay(100);
+
 	document.getElementById("Br"+n).style.fill="red";
 	alert("Chambre" + n)
 }
