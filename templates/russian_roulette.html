@@ -1,45 +1,86 @@
-</html>
+<html lang="fr">
 <head>
-<script>
-//document.addEventListener("click", () => document.getElementById("Br1").style.fill = "grey");
-//document.addEventListener("click", () => document.getElementById("Br2").style.fill = "grey");
-//document.addEventListener("click", () => document.getElementById("Br3").style.fill = "grey");
-//document.addEventListener("click", () => document.getElementById("Br4").style.fill = "grey");
-//document.addEventListener("click", () => document.getElementById("Br5").style.fill = "grey");
-//document.addEventListener("click", () => document.getElementById("Br6").style.fill = "grey");
+    <meta charset="utf-8">
+    <script>
+        let redCount = 0;
+        let totalGains = 0;
+        let winCount = 0;
 
-function lancer(){
-	   var number = Math.floor((Math.random() * 6)+1);
-          alert("le barillet tourne..... BAM !! le numéro " + number);
-	if(document.getElementById("Br"+number).style.fill=="red"){alert("Perdu");}
-	else{alert("Gagné");}
-}
+        function lancer(){
+            var number = Math.floor((Math.random() * 6) + 1);
+            alert("Le barillet tourne..... BAM !! Le numéro " + number);
 
-function chamber(n){
-	alert("Chambre" + n)
-setTimeout(() => { 
-	document.getElementById("Br"+n).style.fill="red";
-}, 100);
-}
-</script>
+            setTimeout(() => { 
+                let selectedCircle = document.getElementById("Br"+number);
+                
+                if (selectedCircle.style.fill == "red") {
+                    alert("Perdu");
+                    totalGains = 0;
+                    redCount = 0;
+                    winCount = 0;
+                    document.getElementById("gains").innerText = "Total des gains : " + totalGains + "€";
+                    document.getElementById("wins").innerText = "Victoires : " + winCount;
+                } else {
+                    alert("Gagné");
+                    let gains = 0;
+                    if (redCount === 1) {
+                        gains = 10000;
+                    } else if (redCount === 2) {
+                        gains = 100000;
+                    } else if (redCount === 3) {
+                        gains = 1000000;
+                    }
+                    totalGains += gains;
+                    winCount++;
+                    document.getElementById("gains").innerText = "Total des gains : " + totalGains + "€";
+                    document.getElementById("wins").innerText = "Victoires : " + winCount;
+                    alert("Vous avez gagné " + gains + "€. Total des gains : " + totalGains + "€.");
+                }
 
+                resetChambres(); 
 
+                selectedCircle.style.fill = "blue";
+            }, 100);
+        }
+
+        function chamber(n){
+            if (redCount >= 3) {
+                alert("Vous avez déjà sélectionné 3 chambres !");
+                return;
+            }
+
+            alert("Chambre " + n);
+
+            setTimeout(() => { 
+                document.getElementById("Br"+n).style.fill="red";
+                redCount++;
+            }, 100);
+        }
+
+        function resetChambres(){
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById("Br" + i).style.fill = "gray";
+            }
+            redCount = 0;
+        }
+    </script>
 </head>
 <body>
-	<h1>Roulette Russe</h1>
+    <h1>Roulette Russe</h1>
 
-	<svg width=200 height=200 style="background-color:antiquewhite">
-	<circle cx="100" cy="100" r="95" stroke="black" stroke-width="3" fill="none" />
-	<circle id="Br1" cx="100" cy="40" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(1)" />
-	<circle id="Br2" cx="150" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(2)"/>
-	<circle id="Br3" cx="50" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(3)" />
-	<circle id="Br4" cx="50" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(4)"/>
-	<circle id="Br5" cx="150" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(5)"/>
-	<circle id="Br6" cx="100" cy="160" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(6)"/>
-	<circle cx="100" cy="100" r="10" stroke="black" stroke-width="3" fill="black" />
-	</svg>	
-	
-	<button onclick="lancer()">Jouer</button>	
-	
+    <svg width="200" height="200" style="background-color:antiquewhite">
+        <circle cx="100" cy="100" r="95" stroke="black" stroke-width="3" fill="none" />
+        <circle id="Br1" cx="100" cy="40" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(1)" />
+        <circle id="Br2" cx="150" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(2)" />
+        <circle id="Br3" cx="50" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(3)" />
+        <circle id="Br4" cx="50" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(4)" />
+        <circle id="Br5" cx="150" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(5)" />
+        <circle id="Br6" cx="100" cy="160" r="25" stroke="black" stroke-width="3" fill="gray" onclick="chamber(6)" />
+        <circle cx="100" cy="100" r="10" stroke="black" stroke-width="3" fill="black" />
+    </svg>  
+
+    <button onclick="lancer()">Jouer</button>
+    <p id="gains">Total des gains : 0€</p>
+    <p id="wins">Victoires : 0</p>
 </body>
 </html>
